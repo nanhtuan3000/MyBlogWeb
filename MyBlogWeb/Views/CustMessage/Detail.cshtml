@@ -1,0 +1,19 @@
+﻿@model Model.EF.Message
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tm-main-content">
+    <div class="tm-content-box tm-content-box-home">
+        <img src="~/Assets/Home/img/1080x360-01.jpg" alt="Image" class="img-fluid tm-welcome-img">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="tm-box-pad tm-bordered-box">
+                <h2 class="tm-section-title tm-orange-text">#@Model.ID: Thư hồi đáp của @Model.UserName</h2>
+                @Html.Raw(Model.Answer)
+            </div>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model MyBlogWeb.Areas.Admin.Models.MessageBoxModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Cập nhật trả lời câu hỏi
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Edit", "MessageBox", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="card mb-4 py-3 border-bottom-primary">
+                <div class="card-header">
+                    <div class="card-title">Trả lời câu hỏi</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">                        
+                        @Html.LabelFor(m => m.UserName)                        
+                        @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Mật danh", @disabled = "True" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Detail)
+                        <div class="alert alert-primary" role="alert">
+                            @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Answer)
+                        @Html.TextAreaFor(m => m.Answer,new { @class = "form-control", @placeholder = "Trả lời câu hỏi", @id = "textMessage" })
+                        @Html.ValidationMessageFor(m => m.Answer, "", new { @class = "badge badge-danger" })
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>                   
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Trả lời" />
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+
+@section scripts{
+    <!-- Page level plugins -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="/Assets/Plugins/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/Plugins/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+            CKEDITOR.replace('textMessage', {
+                    customConfig: "/Assets/Plugins/ckeditor/config.js",
+                    editorplaceholder: 'Viết câu trả lời!'
+                });
+    </script>
+}

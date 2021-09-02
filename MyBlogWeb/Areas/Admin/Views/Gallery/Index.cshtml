@@ -1,0 +1,104 @@
+﻿@model MyBlogWeb.Areas.Admin.Models.GalleryModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section headscripts{
+    <!-- Custom styles for this page -->
+    <link href="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+@section header{
+    Quản lý ảnh
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="AddImage" method="post" action="/Admin/Gallery/SaveImage" onsubmit="return AjaxPost()">
+            @Html.AntiForgeryToken()
+            <div class="card mb-4 py-3 border-bottom-primary">
+                <div class="card-header">
+                    <div class="card-title">Thêm ảnh mới</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Nhập tên ảnh", id = "txtName" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "badge badge-danger" } )
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Link)
+                        @Html.TextBoxFor(m => m.Link, new { @class = "form-control", @placeholder = "Link", id = "txtLink" })
+                        @Html.ValidationMessageFor(m => m.Link, "", new { @class = "badge badge-danger" } )
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ImageUrl)
+                        <div class="input-group mb-3">
+                            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", @placeholder = "Chọn ảnh...", id = "txtImageUrl" })
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="BrowseServer();">Chọn ảnh</button>
+                            </div>                            
+                        </div>
+                        @Html.ValidationMessageFor(m => m.ImageUrl, "", new { @class = "badge badge-danger" })
+                    </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" class="btn btn-danger" value="Thêm mới" />
+                        </div>
+                 </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Quản lý ảnh</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên ảnh</th>
+                                <th>Link</th>
+                                <th>Đường dẫn</th>
+                                <th>Trạng thái</th>
+                                <th>Sửa</th>
+                                <th>Xóa</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Link</th>
+                                <th>ImageUrl</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <!-- Page level plugins -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Plugins/ckfinder/ckfinder.js"></script>
+    <script src="~/Assets/Admin/js/controller/GalleryController.js"></script>
+}

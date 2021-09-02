@@ -1,0 +1,76 @@
+﻿@model MyBlogWeb.Areas.Admin.Models.User
+
+@{
+    ViewBag.Title = "Cập nhật người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    Cập nhật người dùng
+}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Cập nhật người dùng</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName)
+                        @Html.TextBoxFor(m => m.UserName, "", new { @class = "form-control", @placeholder = "Tài khoản" })
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "badge badge-danger" })                       
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Mật khẩu" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control", @placeholder = "Họ và tên" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.TextBoxFor(m => m.Phone, "", new { @class = "form-control", @placeholder = "Số điện thoại" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.CheckBoxFor(m => m.Status, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.Label("Kích hoạt")
+                            @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Cập nhật" />
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+
+@section scripts{
+    <!-- Page level plugins -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

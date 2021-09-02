@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section headscripts{    
+    <!-- Custom styles for this page -->
+    <link href="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+@section header{
+    Danh sách người dùng
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tài khoản</th>
+                        <th>Tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Trạng thái</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>UserName</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <!-- Page level plugins -->
+    <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>    
+    <script src="~/Assets/Admin/js/controller/UserController.js"></script>
+    
+}

@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CKFinder - Sample - Bootstrap Skin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link href="sample.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Assets/Admin/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Assets/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Assets/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Assets/Admin/js/sb-admin-2.min.js"></script>
+
+    <script src="~/Assets/Plugins/ckfinder/ckfinder.js"></script>
+</head>
+<body>
+    <h1 class="samples">
+        CKFinder - Sample - Bootstrap Skin
+    </h1>
+    <div class="description">
+        The Bootstrap skin was added in CKFinder 2.6 and is based on a Bootstrap framework.
+    </div>
+    <p style="padding-left: 30px; padding-right: 30px;">
+        <script type="text/javascript">
+
+			// You can use the "CKFinder" class to render CKFinder in a page:
+			var finder = new CKFinder();
+			// The path for the installation of CKFinder (default = "/ckfinder/").
+			finder.basePath = '../';
+			// The default height is 400.
+			finder.height = 600;
+			// Change the skin to bootstrap.
+			finder.skin = 'bootstrap';
+			// Create CKFinder instance.
+			finder.create();
+
+        </script>
+    </p>
+    <div id="footer">
+        <hr />
+        <p>
+            CKFinder - Ajax File Manager - <a class="samples" href="http://cksource.com/ckfinder/">http://cksource.com/ckfinder</a>
+        </p>
+        <p id="copy">
+            Copyright &copy; 2007-2015, <a class="samples" href="http://cksource.com/">CKSource</a> - Frederico Knabben. All rights reserved.
+        </p>
+    </div>
+</body>
+</html>
